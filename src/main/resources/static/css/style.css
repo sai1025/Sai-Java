@@ -1,0 +1,22 @@
+
+body
+{
+	background: #e2e2e2;
+}
+
+.bg-primary
+{
+	background: #009688!important;
+}
+nav
+{
+	color:white!important;
+}
+
+.container{
+height: 100%;
+align-content: center;
+}
+
+@media only screen and (max-width:600px){
+}

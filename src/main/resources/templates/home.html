@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>home Page</title>	
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<link href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" rel="stylesheet" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
+	<link rel="stylesheet" th:href="@{/css/style1.css}">
+	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+	<script type="text/javascript" th:src="@{/js/login_script.js}"></script>
+	<style>
+		.error {
+			color: red;
+			font-size: 0.9em;
+			margin-top: 0.25rem;
+		}
+	</style>
+</head>
+<body>
+<section>
+ <div class="container text-center">		
+	<div  th:if="${session.message}" th:classappend="${session.message.type}" class="alert " role="alert">
+			 <p th:text="${session.message.content}"></p>
+			<th:block th:text="${@sessionHelper.removeMessageFromSession()}" > </th:block>
+	</div>
+</div>
+ <div class="container">
+	<div class="d-flex justify-content-center h-100">
+		
+		<div class="card">
+			<div class="card-header">
+				<h3>Sign In</h3>
+			</div>
+			<div class="card-body">
+				<form id="loginForm" th:action="@{/employee/authenticate}" method="post">
+				
+				
+				
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+						</div>
+						<input type="text" name="email" class="form-control" placeholder="Enter email here" required>
+					</div>
+					<div class="error-container">
+						<label for="email" class="error"></label>
+					</div>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<input type="password" name="password" class="form-control" placeholder="Password" required>
+					</div>
+					<div class="error-container">
+						<label for="password" class="error"></label>
+					</div>
+					<div class="form-group">
+						<input type="submit" value="Login" class="btn float-right login_btn">
+					</div>
+				</form>
+				
+			</div>
+			<div class="card-footer">
+				<div class="d-flex justify-content-center links">
+					Don't have an account?<a th:href="@{/signup}">Sign Up</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</section>
+</body>
+</html>
